@@ -1,4 +1,5 @@
 from stats import getNumWords;
+from stats import getNumChars;
 
 def get_book_text(path):
     """
@@ -22,6 +23,8 @@ def main():
     text = get_book_text("./books/frankenstein.txt")
     num_words = getNumWords(text)
     print(f"{num_words} words found in the document.")
+    getNumChars(text)
+    print(getNumChars(text))
 
 if __name__ == "__main__":
     main()
