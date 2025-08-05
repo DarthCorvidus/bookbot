@@ -4,9 +4,8 @@ def getNumWords(text):
 
 def getNumChars(text):
     chars = {}
-    for i in range(0, len(text)):
-        char = text[i].lower()
-        if char not in chars:
-            chars[char] = 0
-        chars[char] = chars[char] + 1
+    for char in text:
+        char = char.lower()
+        # get(char, 0) serves as some sort of coalesce here.
+        chars[char] = chars.get(char, 0) + 1
     return chars
