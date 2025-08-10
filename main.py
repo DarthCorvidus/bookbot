@@ -1,5 +1,6 @@
-from stats import getNumWords;
-from stats import getNumChars;
+from stats import getNumWords
+from stats import getNumChars
+from stats import getSortedChars
 
 def get_book_text(path):
     """
@@ -20,11 +21,21 @@ def get_book_text(path):
         return f"An error occurred: {e}"
 
 def main():
-    text = get_book_text("./books/frankenstein.txt")
+    path = "books/frankenstein.txt"
+    print("============ BOOKBOT ============")
+    print(f"Analyzing {path}...")
+    text = get_book_text(path)
+    print("----------- Word Count ----------")
     num_words = getNumWords(text)
-    print(f"{num_words} words found in the document.")
-    getNumChars(text)
-    print(getNumChars(text))
+    print(f"Found {num_words} total words.")
+    print("--------- Character Count -------")
+    chars = getSortedChars(getNumChars(text))
+    for entry in chars:
+        if not entry["char"].isalpha():
+           continue
+        print(f"{entry['char']}: {entry['num']}")
+    print("============= END ===============")
+    
 
 if __name__ == "__main__":
     main()
