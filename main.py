@@ -1,6 +1,7 @@
 from stats import getNumWords
 from stats import getNumChars
 from stats import getSortedChars
+import sys
 
 def get_book_text(path):
     """
@@ -21,7 +22,10 @@ def get_book_text(path):
         return f"An error occurred: {e}"
 
 def main():
-    path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    path = sys.argv[1]
     print("============ BOOKBOT ============")
     print(f"Analyzing {path}...")
     text = get_book_text(path)
